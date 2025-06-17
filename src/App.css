@@ -1,0 +1,241 @@
+/* Global styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #000000;
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: #000000; /* Ensuring the main app background is black */
+  color: white; /* Set default text color for contrast */
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column; /* Stack content sections vertically */
+  padding: 0; /* Remove overall padding from main-content */
+  width: 100%;
+}
+
+/* Responsive container */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0; /* Remove padding from container as content-with-background-image has it */
+}
+
+.content-with-background-image {
+  position: relative;
+  width: 100%;
+  height: 550px; /* Adjust height as needed to fit image and content */
+  background-image: url('/pexels-barthy-185030.jpg');
+  background-size: cover;
+  background-position: center right; /* Position image to the right within the container */
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 5% 20px 5%; /* Adjusted padding: top for navbar, rest for content */
+  box-sizing: border-box;
+  overflow: hidden; /* Hide overflowing parts of the image */
+  margin-bottom: 20px; /* Space below this section */
+}
+
+/* Styles specifically for content inside content-with-background-image */
+.content-in-image {
+  margin-top: 64px; /* Space for the navbar at the top */
+}
+
+/* Navbar within image adjustments */
+.content-with-background-image .navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 0 20px; /* Match navbar-wrapper padding */
+  box-sizing: border-box;
+}
+
+/* Main content specific styles */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 0 20px; /* Add padding here for sections below the image */
+}
+
+.section-title-main {
+  font-size: 1.5rem !important;
+  font-weight: 600 !important;
+  color: white;
+}
+
+.see-all-link {
+  color: #b0b0b0 !important;
+  text-decoration: none;
+  font-size: 0.9rem !important;
+  cursor: pointer;
+}
+
+.trending-text {
+  font-size: 1rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 10px;
+}
+
+.song-title {
+  font-size: 5rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  line-height: 1;
+}
+
+.artist-name {
+  font-size: 2rem;
+  font-weight: 500;
+  margin-right: 20px;
+}
+
+.play-count {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.listen-now-button {
+  background-color: #5b21b6 !important;
+  color: white !important;
+  border-radius: 25px !important;
+  padding: 10px 30px !important;
+  text-transform: none !important;
+  font-size: 1.1rem !important;
+  font-weight: 500 !important;
+}
+
+.heart-button {
+  border-color: rgba(255, 255, 255, 0.5) !important;
+  color: white !important;
+  border-radius: 50% !important;
+  min-width: 50px !important;
+  height: 50px !important;
+  padding: 0 !important;
+}
+
+/* Utility classes */
+.text-center {
+  text-align: center;
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
+
+.mb-20 {
+  margin-bottom: 20px;
+}
+
+/* Animation classes */
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsive breakpoints */
+@media (max-width: 768px) {
+  .main-content {
+    padding: 0; 
+  }
+  
+  .container {
+    padding: 0;
+  }
+
+  .content-with-background-image {
+    height: 400px; /* Adjust height for mobile */
+    padding: 64px 5% 15px 5%; /* Adjusted padding for mobile */
+    background-position: center; /* Center image for smaller screens */
+  }
+
+  .song-title {
+    font-size: 3rem;
+  }
+
+  .artist-name {
+    font-size: 1.5rem;
+  }
+
+  .play-count {
+    font-size: 1rem;
+  }
+
+  .listen-now-button {
+    padding: 8px 20px !important;
+    font-size: 1rem !important;
+  }
+
+  .heart-button {
+    min-width: 40px !important;
+    height: 40px !important;
+  }
+
+  .content-in-image {
+    margin-top: 56px; /* Adjust for smaller navbar height on mobile */
+  }
+
+  .content-with-background-image .navbar {
+    padding: 0 15px;
+  }
+
+  .section-header {
+    padding: 0 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-content {
+    padding: 0;
+  }
+  
+  .container {
+    padding: 0;
+  }
+
+  .content-with-background-image {
+    height: 300px; /* Further adjust height for very small screens */
+    padding: 50px 5% 10px 5%;
+  }
+
+  .song-title {
+    font-size: 2.5rem;
+  }
+
+  .artist-name {
+    font-size: 1.2rem;
+  }
+
+  .section-header {
+    padding: 0 10px;
+  }
+}
