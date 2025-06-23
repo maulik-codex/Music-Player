@@ -9,7 +9,7 @@ import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlin
 import Genres from './Components/Genres';
 import Player from './Components/Player';
 
-const BACKEND_URL = 'http://localhost:5000';
+const BACKEND_URL = 'https://music-player-backend-1-znhx.onrender.com';
 
 const App = () => {
   const [currentSong, setCurrentSong] = useState(null); // { url, song, duration }
