@@ -22,7 +22,7 @@ import LibraryMusicOutlinedIcon from '@mui/icons-material/LibraryMusicOutlined';
 import DevicesOutlinedIcon from '@mui/icons-material/DevicesOutlined';
 import GoogleIcon from '@mui/icons-material/Google';
 
-const drawerWidth = 250;
+const drawerWidth = 200;
 
 const Drawer = styled(MuiDrawer)(({ theme }) => ({
   width: drawerWidth,

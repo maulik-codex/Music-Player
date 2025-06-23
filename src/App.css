@@ -13,7 +13,7 @@ body {
 }
 
 .app-container {
-  min-height: 100vh;
+  padding-left: 30px;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -32,9 +32,8 @@ body {
 /* Responsive container */
 .container {
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0; /* Remove padding from container as content-with-background-image has it */
+  margin:auto;
+  padding:auto; /* Remove padding from container as content-with-background-image has it */
 }
 
 .content-with-background-image {
@@ -47,11 +46,10 @@ body {
   background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   padding: 80px 5% 20px 5%; /* Adjusted padding: top for navbar, rest for content */
   box-sizing: border-box;
   overflow: hidden; /* Hide overflowing parts of the image */
-  margin-bottom: 20px; /* Space below this section */
+  margin-bottom: 10px; /* Reduced space below this section */
 }
 
 /* Styles specifically for content inside content-with-background-image */
@@ -65,7 +63,7 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  padding: 0 20px; /* Match navbar-wrapper padding */
+  padding: 0 5%; /* Match content area padding */
   box-sizing: border-box;
 }
 
@@ -96,6 +94,7 @@ body {
   font-weight: 500;
   color: rgba(255, 255, 255, 0.7);
   margin-bottom: 10px;
+  margin-left: 5px;
 }
 
 .song-title {
@@ -103,17 +102,20 @@ body {
   font-weight: 700;
   margin-bottom: 15px;
   line-height: 1;
+  margin-left: 5px;
 }
 
 .artist-name {
   font-size: 2rem;
   font-weight: 500;
   margin-right: 20px;
+  margin-left: 5px;
 }
 
 .play-count {
+  padding-left:10px;
   font-size: 1.2rem;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgb(255, 255, 255);
 }
 
 .listen-now-button {
@@ -238,4 +240,10 @@ body {
   .section-header {
     padding: 0 10px;
   }
+  .player
+{
+   margin-top: 1 ;
 }
+}
+
+

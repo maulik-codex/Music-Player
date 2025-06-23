@@ -21,7 +21,6 @@ const Search = styled('div')(({ theme }) => ({
   position: 'relative',
   borderRadius: theme.shape.borderRadius,
   width: '50%',
-  margin: '0 auto',
   [theme.breakpoints.down('sm')]: {
     width: '80%',
   },
@@ -47,9 +46,10 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function PrimarySearchAppBar() {
+export default function PrimarySearchAppBar({ onSearch, loading }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+  const [searchValue, setSearchValue] = React.useState('');
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -69,6 +69,22 @@ export default function PrimarySearchAppBar() {
 
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
+  };
+
+  const handleInputChange = (e) => {
+    setSearchValue(e.target.value);
+  };
+
+  const handleSearch = () => {
+    if (searchValue.trim() && onSearch) {
+      onSearch(searchValue.trim());
+    }
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      handleSearch();
+    }
   };
 
   const menuId = 'primary-search-account-menu';
@@ -148,6 +164,13 @@ export default function PrimarySearchAppBar() {
   return (
     <AppBar position="absolute" sx={{ top: 0, left: 0, width: '100%', background: 'transparent', boxShadow: 'none' }}>
       <Toolbar>
+        <Typography
+          variant="h6"
+          noWrap
+          component="div"
+          sx={{ display: { xs: 'none', sm: 'block' }, mr: 3, fontWeight: 'bold', color: 'white' }}
+        >
+        </Typography>
         <Box sx={{ display: { xs: 'none', sm: 'flex' }, alignItems: 'center' }}>
           <Typography variant="body1" className="nav-link" sx={{ mr: 2 }}>
             MUSIC
@@ -160,7 +183,7 @@ export default function PrimarySearchAppBar() {
           </Typography>
         </Box>
         <Box sx={{ flexGrow: 1 }} />
-        <Search className="search-container">
+        <Search className="search-container" sx={{ margin: '0 auto', display: 'flex', alignItems: 'center' }}>
           <SearchIconWrapper>
             <SearchIcon className="nav-icon" />
           </SearchIconWrapper>
@@ -168,15 +191,30 @@ export default function PrimarySearchAppBar() {
             placeholder="Type here to search"
             inputProps={{ 'aria-label': 'search' }}
             className="search-input"
+            value={searchValue}
+            onChange={handleInputChange}
+            onKeyDown={handleKeyDown}
+            disabled={loading}
           />
+          <button
+            onClick={handleSearch}
+            disabled={loading || !searchValue.trim()}
+            style={{
+              marginLeft: 8,
+              padding: '6px 12px',
+              borderRadius: 4,
+              border: 'none',
+              background: '#1976d2',
+              color: '#fff',
+              cursor: loading ? 'not-allowed' : 'pointer',
+              fontWeight: 600
+            }}
+          >
+            {loading ? 'Searching...' : 'Search'}
+          </button>
         </Search>
         <Box sx={{ flexGrow: 1 }} />
         <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center' }}>
-          <IconButton size="large" aria-label="show 4 new mails" color="inherit" className="nav-icon">
-            <Badge badgeContent={4} color="error">
-              <MailIcon />
-            </Badge>
-          </IconButton>
           <IconButton
             size="large"
             aria-label="settings"
@@ -199,7 +237,7 @@ export default function PrimarySearchAppBar() {
             <AccountCircle />
           </IconButton>
           <Typography variant="body1" color="inherit">
-            Dave Cooper
+            Maulik Chhansiya
           </Typography>
         </Box>
         <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
